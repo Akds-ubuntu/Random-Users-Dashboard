@@ -60,7 +60,7 @@ class RandomUserView(DetailView):
     context_object_name = 'user'
 
     def get_object(self, queryset=None):
-        """Метод, который задаёт границы для рандомного id"""
+        """Метод для получения случайного объекта пользователя."""
         try:
             ids = list(RandomUser.objects.values_list('id', flat=True))
             if not ids:

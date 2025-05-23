@@ -5,6 +5,10 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
+    """
+    Кастомная команда для проверки
+    доступности базы данных перед запуском приложения.
+    """
     def handle(self, *args, **options):
         self.stdout.write("Waiting for database...")
         db_conn = None

@@ -6,6 +6,10 @@ logger = logging.getLogger(__name__)
 
 
 class Command(BaseCommand):
+    """
+    Кастомная команда управления для
+    первоначальной загрузки пользователей.
+    """
     help = "Load initial users from external API"
 
     def handle(self, *args, **options):

@@ -85,7 +85,6 @@ if os.getenv('DB_USED') == 'postgresql':
         }
     }
 else:
-    print(os.getenv('DB_NAME'))
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
