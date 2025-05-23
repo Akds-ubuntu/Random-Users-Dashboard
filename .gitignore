@@ -6,16 +6,13 @@ __pycache__/
 *.sqlite3
 
 # Env files
-.env
-.env.*
+#.env
 
 # Django
 staticfiles/
 media/
 
-# Docker
 **/docker-compose.override.yml
-#**/Dockerfile
 
 # VSCode
 .vscode/
