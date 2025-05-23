@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+
+# Env files
+.env
+.env.*
+
+# Django
+staticfiles/
+media/
+
+# Docker
+**/docker-compose.override.yml
+#**/Dockerfile
+
+# VSCode
+.vscode/
+
+# Byte-compiled / caches
+*.pyc
+*.pyo
+
+# Docker volumes
+postgres_data/

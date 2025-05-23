@@ -1,0 +1,81 @@
+{% extends "main/user_list.html" %}
+
+{% block title %}Профиль {{ user.first_name }} {{ user.last_name }}{% endblock %}
+
+{% block header_title %}<h1>Профиль пользователя</h1>{% endblock %}
+
+{% block header_subtitle %}<p class="mb-0">{{ user.first_name }} {{ user.last_name }}</p>{% endblock %}
+
+{% block user_count %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card user-detail-card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="{{ user.picture}}" alt="User" class="user-avatar-large mb-4">
+                        <a href="{% url 'main' %}" class="btn btn-outline-primary w-100">
+                            Назад к списку
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="mb-4">{{ user.first_name }} {{ user.last_name }}</h2>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <h5>Основная информация</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <strong>Пол:</strong> 
+                                        {% if user.gender == 'male' %}Мужской{% else %}Женский{% endif %}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Контакты</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <strong>Email:</strong> <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Телефон:</strong> <a href="tel:{{ user.phone }}">{{ user.phone }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">Адрес</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    {{ user.location.street.number }} {{ user.location.street.name }}<br>
+                                    {{ user.location.city }}, {{ user.location.state }}<br>
+                                    {{ user.location.country }}<br>
+                                    Почтовый индекс: {{ user.location.postcode }}
+                                </p>
+                                {% if user.location.coordinates.latitude and user.location.coordinates.longitude %}
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        Координаты: {{ user.location.coordinates.latitude|floatformat:4 }}, {{ user.location.coordinates.longitude|floatformat:4 }}
+                                    </small>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <a href="{% url 'random_user' %}" class="btn btn-primary me-2">
+                                Случайный пользователь
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
